@@ -1,0 +1,106 @@
+<style>
+        .border-vertical {
+            border-left: 1px solid #ccc;
+            height: 100%;
+        }
+        
+        .footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #f1f1f1;
+            padding: 10px 10px; /* Agrega padding horizontal para los márgenes */
+            box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total del footer */
+            border-top: 1px solid #ccc; /* Borde superior opcional */
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .footer-content {
+            display: flex;
+            align-items: center; /* Alinea el contenido verticalmente al centro */
+            width: 100%;
+        }
+
+        .footer-content h4 {
+            margin-right: 10px; /* Espacio entre el título y la imagen */
+        }
+
+        .footer-content img {
+            margin-left: auto; /* Mueve la imagen hacia la derecha */
+        }
+
+        .footer p {
+            margin-top: 10px;
+            width: 100%;
+        }
+    </style>
+
+    <div id="fmMenuPartidas">
+        <br>
+        <br>
+        <div class="container">
+            <div class="row d-flex">
+                
+                <!-- Columna para crear una partida -->
+                <div class="col-md-4">
+                    <h2>Crear una Partida</h2>
+                    <button type="button" id="btnCrearPartida" class="btn btn-success">Crear Partida</button>
+                </div>
+
+                <!-- Línea vertical -->
+                <div class="col-md-1 d-flex justify-content-center align-items-center">
+                    <div class="border-vertical"></div>
+                </div>
+
+                <!-- Columna para unirse a una partida -->
+
+                <div class="col-md-4">
+                    <h2>Unirse a una Partida</h2>
+                    <div class="form-group">
+                        <label for="idPartida">ID de la Partida:</label>
+                        <input type="text" class="form-control" id="idPartida" placeholder="Introduce el ID de la partida">
+                    </div>
+                    <button type="button" id="btnUnirPartida" class="btn btn-primary">Unirse a Partida</button>
+                </div>
+
+                
+
+                <!-- Línea vertical -->
+                <div class="col-md-1 d-flex justify-content-center align-items-center">
+                    <div class="border-vertical"></div>
+                </div>
+
+                <!-- Columna para partidas disponibles -->
+                <div class="col-md-2">
+                    <h2>Partidas Disponibles</h2>
+                    <table class="table table-bordered" id="tablaPartidas">
+                        <thead>
+                            <tr>
+                                <th>Codigo</th>
+                                <th>Propietario</th>
+                                <th>Unirse</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Filas dinámicas -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <footer class="footer">
+            <div class="footer-content">
+                <h4>Cómo Jugar a las Damas</h4>
+                <img src="/cliente/img/img_menuJuego.gif" width="150" height="150" alt="Imagen del juego de damas">
+            </div>
+            <p>El objetivo del juego de damas es capturar todas las piezas del oponente o bloquearlas para que no puedan moverse. Se juega en un tablero de 8x8 con 12 piezas por jugador. Las piezas se mueven en diagonal hacia adelante y capturan saltando sobre las piezas del oponente. Cuando una pieza llega al otro lado del tablero, se corona y puede moverse en ambas direcciones.</p>
+        </footer>
+    </div>

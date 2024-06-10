@@ -1,0 +1,158 @@
+
+<div id="fmTablero">
+    <style>
+        .checkers-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .checkers-container .board {
+            display: grid;
+            grid-template-columns: repeat(8, 50px);
+            grid-template-rows: repeat(8, 50px);
+            gap: 0;
+            border: 2px solid #333;
+        }
+
+        .checkers-container .row {
+            display: contents;
+        }
+
+        .checkers-container .cell {
+            width: 50px;
+            height: 50px;
+        }
+
+        .checkers-container .black {
+            background-color: #000;
+        }
+
+        .checkers-container .white {
+            background-color: hsl(34, 73%, 85%);
+        }
+
+        .checkers-container .piece {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin: 5px;
+        }
+
+        .checkers-container .piece.red {
+            background-color: rgb(214, 31, 31);
+        }
+
+        .checkers-container .piece.black {
+            background-color: black;
+        }
+        .checkers-container .timers {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .timer {
+            font-size: 2em;
+            background-color: #fff;
+            border: 2px solid #333;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+
+    <div class="checkers-container">
+        <div class="timers">
+            <div id="timer1" class="timer">00:00</div>
+            <div id="timer2" class="timer">00:00</div>
+        </div>
+    <div class="checkers-container">
+        <div class="board">
+            <!-- Aquí va el contenido del tablero -->
+            <div class="row">
+                <div class="cell black"></div>
+                <div class="cell white"></div>
+                <div class="cell black"></div>
+                <div class="cell white"></div>
+                <div class="cell black"></div>
+                <div class="cell white"></div>
+                <div class="cell black"></div>
+                <div class="cell white"></div>
+            </div>
+            <div class="row">
+                <div class="cell white"></div>
+                <div class="cell black"></div>
+                <div class="cell white"></div>
+                <div class="cell black"></div>
+                <div class="cell white"></div>
+                <div class="cell black"></div>
+                <div class="cell white"></div>
+                <div class="cell black"></div>
+            </div>
+            <div class="row">
+                <div class="cell black"></div>
+                <div class="cell white"></div>
+                <div class="cell black"></div>
+                <div class="cell white"></div>
+                <div class="cell black"></div>
+                <div class="cell white"></div>
+                <div class="cell black"></div>
+                <div class="cell white"></div>
+            </div>
+            <div class="row">
+                <div class="cell white"></div>
+                <div class="cell black"></div>
+                <div class="cell white"></div>
+                <div class="cell black"></div>
+                <div class="cell white"></div>
+                <div class="cell black"></div>
+                <div class="cell white"></div>
+                <div class="cell black"></div>
+            </div>
+            <div class="row">
+                <div class="cell black"></div>
+                <div class="cell white"></div>
+                <div class="cell black"></div>
+                <div class="cell white"></div>
+                <div class="cell black"></div>
+                <div class="cell white"></div>
+                <div class="cell black"></div>
+                <div class="cell white"></div>
+            </div>
+            <div class="row">
+                <div class="cell white"></div>
+                <div class="cell black"></div>
+                <div class="cell white"></div>
+                <div class="cell black"></div>
+                <div class="cell white"></div>
+                <div class="cell black"></div>
+                <div class="cell white"></div>
+                <div class="cell black"></div>
+            </div>
+            <div class="row">
+                <div class="cell black"></div>
+                <div class="cell white"></div>
+                <div class="cell black"></div>
+                <div class="cell white"></div>
+                <div class="cell black"></div>
+                <div class="cell white"></div>
+                <div class="cell black"></div>
+                <div class="cell white"></div>
+            </div>
+            <div class="row">
+                <div class="cell white"></div>
+                <div class="cell black"></div>
+                <div class="cell white"></div>
+                <div class="cell black"></div>
+                <div class="cell white"></div>
+                <div class="cell black"></div>
+                <div class="cell white"></div>
+                <div class="cell black"></div>
+            </div>
+        </div>
+    </div>
+  </div>    
