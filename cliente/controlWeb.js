@@ -173,6 +173,14 @@ $(document).ready(function () {
         }
 
 
+    this.modalEquipo = function(){
+
+    $('#teamInfo').text(`Estás en el equipo ${ws.color}.`);
+    $('#teamModal').modal('show');
+        
+    }
+
+
 
     this.mostrarNumeroUsuarios = function () {
         let cadena = '<div class="form-group" id="mNU">';
@@ -297,6 +305,7 @@ $(document).ready(function () {
                 btnUnirse.classList.add('btn', 'btn-primary');
                 btnUnirse.onclick = function() {
                     ws.unirAPartida(partida.codigo);
+                    cw.mostrarTablero();
                 };
 
                 celdaUnir.appendChild(btnUnirse);
@@ -375,6 +384,8 @@ $(document).ready(function () {
         
     
         this.mostrarTablero = function() {
+
+            this.modalEquipo();
             console.log("Cargando tablero de damas...");
         
             $("#fmMenuPartidas").remove();
@@ -398,7 +409,7 @@ $(document).ready(function () {
                             </div>
                         </div>
                     `;
-        
+                    
                     const blackPieces = [];
                     const whitePieces = [];
                     const cells = document.querySelectorAll('.cell');
@@ -506,11 +517,23 @@ $(document).ready(function () {
         
                     cells.forEach(cell => {
                         cell.addEventListener('click', () => {
+
+
+                          
+                            if ( ws.testigo !== ws.color) {
+                                return; // Si ws.testigo es falso, no permitir selección o movimiento
+                            }
+        
+        
+
+
                             const piece = cell.querySelector('.piece');
-                            if (piece) {
+                            if (piece && piece.classList.contains(ws.color)) {
                                 if (selectedPiece) {
                                     deselectPiece();
                                 }
+
+                                
                                 selectedPiece = piece;
                                 piece.classList.add('selected');
                                 highlightValidMoves(cell);
