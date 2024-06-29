@@ -78,8 +78,8 @@ function ControlWeb() {
                 let cw = this;
                 google.accounts.id.initialize({
                 //PRODUCCIOn
-               // client_id: "937465366567-5qcj9vucp1pah0muucdkfkpsv2pe2ls5.apps.googleusercontent.com", 
-                client_id: "937465366567-m4lurf473go0f19ou1jrevj7n3oat164.apps.googleusercontent.com", 
+                client_id: "937465366567-irddfe7qmv7k8qlu048oogc7of6isjo6.apps.googleusercontent.com", 
+               // client_id: "937465366567-m4lurf473go0f19ou1jrevj7n3oat164.apps.googleusercontent.com", 
                 auto_select: false,
                 callback: cw.handleCredentialsResponse
                 });google.accounts.id.prompt();}

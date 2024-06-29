@@ -188,7 +188,7 @@ this.enviarJwt=function(jwt){
                 cw.limpiar();
                 cw.mostrarMsg(msg);
                 cw.eliminarBtnGoogle();
-               
+        
 
                 cw.limpiar();
                 console.log("AQUIIII-SI");
@@ -213,17 +213,6 @@ this.enviarJwt=function(jwt){
     }
 
 
-
-
-
-
-
-
-    
-    
-
-
-    
 
         }
 
