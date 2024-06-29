@@ -102,7 +102,7 @@ function ClienteRest() {
 
                     cw.mostrarMsg("Hay un usuario registrado con ese email");
                     cw.mostrarModal("No se ha podido registrar el usuario");
-                    
+                    cw.mostrarLogin();
 
 				} },
             error: function (xhr, textStatus, errorThrown) {
