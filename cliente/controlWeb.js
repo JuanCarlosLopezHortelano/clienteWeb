@@ -78,8 +78,8 @@ function ControlWeb() {
                 let cw = this;
                 google.accounts.id.initialize({
                 //PRODUCCIOn
-                client_id: "937465366567-irddfe7qmv7k8qlu048oogc7of6isjo6.apps.googleusercontent.com", 
-               // client_id: "937465366567-m4lurf473go0f19ou1jrevj7n3oat164.apps.googleusercontent.com", 
+                //client_id: "937465366567-irddfe7qmv7k8qlu048oogc7of6isjo6.apps.googleusercontent.com", 
+                client_id: "937465366567-m4lurf473go0f19ou1jrevj7n3oat164.apps.googleusercontent.com", 
                 auto_select: false,
                 callback: cw.handleCredentialsResponse
                 });google.accounts.id.prompt();}
@@ -396,17 +396,19 @@ $(document).ready(function () {
                 } else {
                     document.getElementById("fmTablero").innerHTML = `
                         <div class="checkers-container">
-                            <div class="timers">
-                                <div id="timer1" class="timer">00:00</div>
-                                <div id="timer2" class="timer">00:00</div>
-                            </div>
-                            <div class="board">
+                            
+                                <div id="timer-black" class="timer timer-black">00:00</div>                                
+                                <div class="board">
                                 ${Array(8).fill(null).map((_, rowIndex) => `
                                     ${Array(8).fill(null).map((_, colIndex) => `
                                         <div class="cell ${((rowIndex + colIndex) % 2 === 0) ? 'light' : 'dark'}"></div>
                                     `).join('')}
                                 `).join('')}
                             </div>
+                                
+                            <div id="timer-white" class="timer timer-white">00:00</div>
+                            
+                            
                         </div>
                     `;
                     
@@ -519,7 +521,7 @@ $(document).ready(function () {
                         cell.addEventListener('click', () => {
 
 
-                          
+                    
                             if ( ws.testigo !== ws.color) {
                                 return; // Si ws.testigo es falso, no permitir selección o movimiento
                             }
@@ -538,6 +540,7 @@ $(document).ready(function () {
                                 piece.classList.add('selected');
                                 highlightValidMoves(cell);
                             } else if (selectedPiece && cell.classList.contains('valid-move')) {
+                                
                                 const index = Array.from(cells).indexOf(cell);
                                 const row = Math.floor(index / 8);
                                 const col = index % 8;
@@ -571,10 +574,11 @@ $(document).ready(function () {
                                 console.log("Movimiento realizado:", testMove);
         
                                 // Actualizar el tablero
-                                cw.actualizarTablero(testMove);
+                                //cw.actualizarTablero(testMove);
         
                                 cell.appendChild(selectedPiece);
-        
+
+                                switchTimers()
                                 // Emitir el movimiento al servidor
                                 ws.enviarMovimiento(moveData); 
         
@@ -591,24 +595,28 @@ $(document).ready(function () {
                             }
                         });
                     });
+
+
+
+                    let timerBlack = 600;
+                    let timerWhite = 600;
+                    let intervalBlack, intervalWhite;
         
-                    let timer1 = document.getElementById('timer1');
-                    let timer2 = document.getElementById('timer2');
-                    let time1 = 0;
-                    let time2 = 0;
-                    let interval1, interval2;
+                    function comenzarPartida() {
+                        startTimerBlack();
+                    }
         
-                    function startTimer1() {
-                        interval1 = setInterval(() => {
-                            time1++;
-                            timer1.textContent = formatTime(time1);
+                    function startTimerBlack() {
+                        intervalBlack = setInterval(() => {
+                            timerBlack--;
+                            document.getElementById('timer-black').textContent = formatTime(timerBlack);
                         }, 1000);
                     }
         
-                    function startTimer2() {
-                        interval2 = setInterval(() => {
-                            time2++;
-                            timer2.textContent = formatTime(time2);
+                    function startTimerWhite() {
+                        intervalWhite = setInterval(() => {
+                            timerWhite--;
+                            document.getElementById('timer-white').textContent = formatTime(timerWhite);
                         }, 1000);
                     }
         
@@ -618,11 +626,37 @@ $(document).ready(function () {
                         return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
                     }
         
-                    startTimer1();
-                    startTimer2();
+                    
+        
+                    function switchTimers() {
+                        if (intervalBlack) {
+                            clearInterval(intervalBlack);
+                            intervalBlack = null;
+                            startTimerWhite();
+                        } else if (intervalWhite) {
+                            clearInterval(intervalWhite);
+                            intervalWhite = null;
+                            startTimerBlack();
+                        }
+                    }
+        
+                    comenzarPartida();
+                    
+        
+        
+            
+
+    
+
+                    
                 }
             });
         };
+
+
+
+
+
         
         
         this.actualizarTablero = function(movimiento) {
@@ -656,6 +690,12 @@ $(document).ready(function () {
                 } else if (piece.classList.contains('white') && toRow === 0) {
                     promoverAReina(piece, 'white');
                 }
+
+
+    
+
+
+        
             }
         };
         
@@ -668,6 +708,9 @@ $(document).ready(function () {
             }
             console.log(`Promovida a reina: ${color}`);
         }
+
+
+    
 
 
 

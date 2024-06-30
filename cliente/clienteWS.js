@@ -37,6 +37,7 @@ function ClienteWS() {
             cli.socket.emit("unirAPartida", { "email": this.email, "codigo": codigo });
             this.color = 'black';
             this.testigo = 'white';
+        
         }
 
         this.socket.on("partidaCreada", function(datos) {
@@ -86,8 +87,15 @@ function ClienteWS() {
             else {this.testigo  = 'white'}
 
             console.log(this.testigo)
+
+           /*  // Gestionar el cambio de cronómetros basado en el turno
+            if (data.color === 'white') {
+                cw.activarTemporizadorNegro();
+            } else {
+                cw.activarTemporizadorBlanco();
+            } */
             //if (data.codigo == this.codigoPartida) {
-                cw.actualizarTablero(data);
+            cw.actualizarTablero(data);
             //};
 
         });
